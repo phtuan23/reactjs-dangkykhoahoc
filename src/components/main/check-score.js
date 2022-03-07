@@ -17,10 +17,10 @@ const CheckScore = () => {
         onSubmit: async (values) => {
             let data = await StudentService.checkMark(values.studentCode);
             if (data.studentCode && data != null) {
-                console.log(data)
                 setStudent(data)
             } else {
                 setErr("Không tìm thấy sinh viên có mã " + values.studentCode);
+                setStudent(null)
             }
         }
     });

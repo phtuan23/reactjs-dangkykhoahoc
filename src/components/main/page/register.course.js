@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
     email: Yup.string().required("Vui lòng nhập email").email("Email không đúng"),
     phone: Yup.string().required("Vui lòng nhập số điện thoại").min(10, "Số điện thoại phải có 10 ký tự"),
     address: Yup.string().required("Vui lòng nhập địa chỉ hiện tại")
-})
+});
 
 const RegisterCourse = () => {
     const [course, setCourse] = useState([]);

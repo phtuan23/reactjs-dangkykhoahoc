@@ -14,6 +14,8 @@ import Login from './login';
 import Register from './register';
 import ScrollToTop from './scroll.to.top';
 import CheckScore from './check-score';
+import Profile from './page/profile/profile';
+import ProfileProtected from './page/profile/ProfileProtected';
 
 const IndexPage = () => {
     return (
@@ -22,6 +24,7 @@ const IndexPage = () => {
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/check-mark" exact component={CheckScore} />
+                <ProfileProtected path="/profile" exact component={Profile} />
                 <>
                     <Header />
                     <Route path="/" exact component={Home} />

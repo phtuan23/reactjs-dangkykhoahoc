@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import UserAuth from '../auth/User';
+
+
 
 const Header = () => {
+    const _user = UserAuth.getAuth();
+    const [user, setUser] = useState(_user != null ? _user : null);
+
+    const logout = () => {
+        UserAuth.logout();
+        setUser();
+    }
+
     return (
         <header>
             <div className="header-area header-transparent">
@@ -29,8 +40,22 @@ const Header = () => {
                                                             <li><NavLink to="/check-mark">Tra cứu điểm</NavLink></li>
                                                         </ul>
                                                     </li>
-                                                    <li className="button-header margin-left "><NavLink to="/register" className="btn">Đăng ký</NavLink></li>
-                                                    <li className="button-header"><NavLink to="/login" className="btn btn3">Đăng nhập</NavLink></li>
+                                                    {
+                                                        user != null ? (
+                                                            <>
+                                                                <li className="button-header"><NavLink to="/profile" className="btn">{user.name}</NavLink>
+                                                                    <ul className="submenu">
+                                                                        <li style={{ cursor: "pointer" }} onClick={logout}>Đăng xuất</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <li className="button-header margin-left "><NavLink to="/register" className="btn">Đăng ký</NavLink></li>
+                                                                <li className="button-header"><NavLink to="/login" className="btn btn3">Đăng nhập</NavLink></li>
+                                                            </>
+                                                        )
+                                                    }
                                                 </ul>
                                             </nav>
                                         </div>
